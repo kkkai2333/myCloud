@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: microserver-eureka-ha
+---
+spring:
+  profiles: server1
+server:
+  port: 8761
+eureka:
+  instance:
+    hostname: server1
+  client:
+    #是否要注册到其他eureka server实例
+    #register-with-eureka: true
+    #是否要从其他eureka server实例获取数据
+    #fetch-registry: true
+    service-url:
+      defaultZone: http://server1:8762/eureka/
+---
+spring:
+  profiles: server2
+server:
+  port: 8762
+eureka:
+  instance:
+    hostname: server2
+  client:
+    #是否要注册到其他eureka server实例
+    #register-with-eureka: true
+    #是否要从其他eureka server实例获取数据
+    #fetch-registry: true
+    service-url:
+      defaultZone: http://server1:8761/eureka/
+
+
