@@ -1,0 +1,19 @@
+server:
+  port: 8083
+spring:
+  application:
+    name: microservice-customer-feign
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8762/eureka/
+  instance:
+    prefer-ip-address: false
+#ribbon
+getUser:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+logging:
+  level:
+    com.customer.demo.config.ProviderFeignConfig: debug
+
