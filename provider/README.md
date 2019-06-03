@@ -1,4 +1,5 @@
 1、在.yml文件中，可以使用“---”分割文本，来区别不同的profiles。
+
 2、在idea中，可以配置启动项的命令行参数（Program arguments）或虚拟机参数（VM options）来调用不同的profiles。
     
     VM options：-Dspring.profiles.active=profiles name
