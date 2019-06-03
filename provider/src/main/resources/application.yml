@@ -1,12 +1,25 @@
 server:
   port: 8080
 spring:
+  profiles: provider1
   application:
     name: microservice-privoder
 eureka:
   client:
     service-url:
-      defaultZone: http://127.0.0.1:8761/eureka/
+      defaultZone: http://127.0.0.1:8761/eureka/,http://127.0.0.1:8762/eureka/
   instance:
     prefer-ip-address: false
-
+---
+server:
+  port: 9090
+spring:
+  profiles: provider2
+  application:
+    name: microservice-privoder
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka/,http://127.0.0.1:8762/eureka/
+  instance:
+    prefer-ip-address: false
