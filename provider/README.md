@@ -3,7 +3,7 @@
 2、在idea中，可以配置启动项的命令行参数（Program arguments）或虚拟机参数（VM options）来调用不同的profiles。
     
     VM options：-Dspring.profiles.active=profilesName
-    Program arguments：-Dspring.profiles.active=profilesName
+    Program arguments：-spring.profiles.active=profilesName
 3、使用jar包启动时，可添加输入启动参数来切换不同的profiles
     
     java -jar projectName --spring.profiles.active=profilesName
