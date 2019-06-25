@@ -13,3 +13,14 @@ eureka:
 getUser:
   ribbon:
     NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+management:
+  endpoint:
+    health:
+      show-details: always
+    web:
+      exposure:
+        include: 'hystrix.stream'
+#ribbon:
+#  eager-load:
+#    enabled: true
+#    clients: microservice-privoder
