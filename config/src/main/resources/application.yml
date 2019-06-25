@@ -1,0 +1,70 @@
+server:
+  # 端口号
+  port: 8087
+
+eureka:
+  client:
+    service-url:
+      # 注册中心地址，如集群部署多个，使用,隔开
+      defaultZone: http://127.0.0.1:8761/eureka/,http://127.0.0.1:8762/eureka/
+  instance:
+    # 优先使用ip注册
+    prefer-ip-address: true
+
+spring:
+  application:
+    # 服务名称
+    name: microservice-config
+  cloud:
+    config:
+      server:
+        git:
+          # 使用HTTP形式进行验证，需要设置git的用户名密码
+          uri: https://github.com/ZHANGJIKAI5/myCloud-configFile.git
+          # Git账号
+          username: ZHANGJIKAI5
+          # Git密码
+          password: W)vm6Y[ni6EEuHHh
+
+          # 使用ssh方式进行验证，不需要设置用户名密码
+          # uri: git@github.com:ZHANGJIKAI5/myCloud-configFile.git
+          # 忽略本地的ssh设置，为false时，会默认查询本地.ssh目录下的私钥信息，建议设置成true并配置private-key（环境迁移还或容器化部署时）
+          # ignore-local-ssh-settings: true
+          # 秘钥使用的算法
+          # host-key-algorithm: ssh-rsa
+          # 设置连接私钥
+          # private-key: |
+
+          # 配置默认访问的文件夹，有多个时，用,隔开
+          # search-paths: foo
+          # 是否在config启动时就clone git仓库的配置，默认情况是，在配置首次被请求是clone。在此处配置时全局的，即相当于配置到所有请求的服务
+          # ！暂未验证成功
+          # clone-on-start: true
+          # 可通过模式匹配，设置不同的git仓库，通过pattern进行匹配，全局设置的参数也可下放到repos
+          # repos:
+          #  test-1:
+          #    pattern: microserver-*
+          #    clone-on-start: true
+          #    uri: https://github.com/ZHANGJIKAI5/myCloud-configFile.git
+
+management:
+  endpoint:
+    health:
+      # 展示详细的服务信息
+      show-details: always
+  endpoints:
+    web:
+      # 暴露接口
+      exposure:
+        include: "*"
+        # exclude:
+
+# 加密
+encrypt:
+  key: foo
+
+# 设置日志级别
+logging:
+  level:
+    org.springframework.cloud: debug
+    org.springframework.boot: debug
