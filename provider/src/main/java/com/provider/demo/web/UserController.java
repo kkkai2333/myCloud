@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @RestController
@@ -27,8 +28,9 @@ public class UserController {
     }
 
     @GetMapping("getUser/{id}")
-    public User getUser(@PathVariable Long id) {
+    public User getUser(@PathVariable Long id, HttpServletRequest request) {
         System.out.println("调用getUser方法：" + integer2.incrementAndGet());
+        System.out.println("当前服务的端口为：" + request.getServerPort());
         User user = new User();
         user.setId(id);
         user.setUsername("用户" + id);
