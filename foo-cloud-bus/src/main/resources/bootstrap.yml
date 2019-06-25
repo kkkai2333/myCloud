@@ -1,0 +1,46 @@
+server:
+  # 端口号
+  port: 8089
+
+eureka:
+  client:
+    service-url:
+      # 注册中心地址，如集群部署多个，使用“,”隔开
+      defaultZone: http://127.0.0.1:8761/eureka/, http://127.0.0.1:8762/eureka/
+  instance:
+    # 优先使用ip注册，为false时，优先使用主机名注册
+    prefer-ip-address: false
+
+spring:
+  application:
+    # 服务名
+    name: microserver-foo-cloud-bus
+  cloud:
+    config:
+      # 通过注册中心查询实例，连接配置中心
+      discovery:
+        # 启用配置中心发现，为true时，会从注册中心获取service-id的实例，进而连接获取配置
+        enabled: true
+        # 配置中心的实例名称
+        service-id: microservice-config
+
+      # 通过ip地址连接配置中心
+      # uri: http://127.0.0.1:8087
+
+      # 对应config server中获取到的profile
+      # profile: dev
+      # 对应git的分支
+      label: master
+
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+# 可通过暴露refresh方法，并在获取参数的类上配置@RefreshScope
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh
