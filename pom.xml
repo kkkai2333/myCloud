@@ -14,6 +14,12 @@
         <module>provider</module>
         <module>customer</module>
         <module>vo</module>
+        <module>hystrix-dashboard</module>
+        <module>zuul</module>
+        <module>demo</module>
+        <module>foo</module>
+        <module>foo-cloud-bus</module>
+        <module>config</module>
     </modules>
 
 

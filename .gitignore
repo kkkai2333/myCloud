@@ -1,10 +1,14 @@
 #Windows
 
 
-
 #idea
 /.idea/
 
 
 #Java
 *.class
+
+
+#Maven
+/.mvn/
+mvnw*
