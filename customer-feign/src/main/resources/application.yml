@@ -13,7 +13,21 @@ eureka:
 getUser:
   ribbon:
     NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+
 logging:
   level:
     com.customer.demo.config.ProviderFeignConfig: debug
 
+ribbon:
+  eager-load:
+    enabled: true
+    clients: microservice-privoder
+
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: "*"
