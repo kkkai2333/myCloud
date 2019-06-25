@@ -3,6 +3,12 @@ server:
 spring:
   application:
     name: microservice-customer
+    # datasource:
+      #driver-class-name: com.mysql.jdbc.Driver
+      # url: jdbc:mysql://localhost:3306/TESTDB?useUnicode=true&characterEncoding=true
+      #url: jdbc:mysql://localhost:8066/TESTDB?useUnicode=true&characterEncoding=true
+      #data-username: root
+      #data-password: root
 eureka:
   client:
     service-url:
@@ -10,4 +16,7 @@ eureka:
   instance:
     prefer-ip-address: false
 
+#mybatis:
+#  type-aliases-package: com.customer.demo.dao
+#  mapper-locations: classpath:/mybatis/*.xml
 
