@@ -1,0 +1,37 @@
+server:
+  port: 8086 #@设置服务端口号
+spring:
+  application:
+    name: microservice-zuul #设置服务名称
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka/ #注册到此注册中心
+management:
+  endpoints:
+    web:
+      exposure: #暴露actuator下的实例
+        include: "*" #需要暴露的实例
+        # exclude: #不暴露的实例
+  endpoint:
+    health:
+      show-details: always #health实例下要查看多详细的信息
+
+zuul:
+  ignored-services: microservice-customer-feign #忽略对该实例发起的访问请求
+  ignored-patterns: /**/getAdmin/** #忽略URL包含getAdmin的访问请求
+  prefix: /api #添加访问地址前缀
+  #strip-prefix: false #暂未验证功能
+  routes:
+    microservice-privoder: /m-p/** #配置microservice-privoder的别名，将m-p的请求转发到microservice-privoder
+    microservice-customer-feign: /m-c-f/**
+    costomer-ribbon-route: #配置microservice-customer-ribbon的多个路由属性，此处为该路由属性的别名
+      serviceId: microservice-customer-ribbon #服务的id
+      path: /m-c-r/** #服务的别名，将m-c-r的请求转发到microservice-customer-ribbon
+    baidu:
+      url: https://www.baidu.com #同样可以路由URL
+      path: /baidu
+
+logging:
+  level:
+    com.netflix: debug #开启com.netflix包下的类的debug等级的日志
